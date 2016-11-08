@@ -701,22 +701,22 @@ var Retarget =
             {
                 Retarget.log("Received raw data for: " + img.src);
 
+                /* TextDecoder is not supported in safari yet
                 var data_view = new DataView(this.response);
-                
                 var decoder = new TextDecoder('ascii');
-                var buf_as_str = decoder.decode(data_view);
-
-                metadata = extract_callback(buf_as_str);
-
+                var buf_as_str = decoder.decode(data_view); */
                 // appending raw data used to load original image
-                var binary = '';
+                // TODO: Can this be improved ? 
+                var buf_as_str = '';
                 var bytes = new Uint8Array(this.response);
                 var len = bytes.byteLength;
                 for (var i = 0; i < len; ++i)
                 {
-                    binary += String.fromCharCode(bytes[i]);
+                    buf_as_str += String.fromCharCode(bytes[i]);
                 }
-                metadata.raw_data = window.btoa(binary);
+                metadata = extract_callback(buf_as_str);
+
+                metadata.raw_data = window.btoa(buf_as_str);
                 //console.log(metadata.raw_data.length);
                 // stack overflows for big buffers 
                 // metadata.raw_data = window.btoa(String.fromCharCode.apply(null, new Uint8Array(this.response)));;
