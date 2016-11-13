@@ -490,7 +490,7 @@ var RetargetGL =
 
         rc.gl.viewport(0, 0, rc.gl.drawingBufferWidth, rc.gl.drawingBufferHeight);
         rc.gl.clearColor(0.15, 0.15, 0.15, 1);
-        rc.gl.clear(rc.gl.COLOR_BUFFER_BIT | rc.gl.DEPTH_BUFFER_BIT);
+        rc.gl.clear(rc.gl.COLOR_BUFFER_BIT);
 
         rc.gl.useProgram(rc.program);
 
@@ -772,15 +772,24 @@ var Retarget =
 
         for (var i = 0; i < imgs.length; ++i)
         {
-            if (imgs[i].getAttribute("data-retarget") == undefined)
+            if (imgs[i].getAttribute("data-retarget") == "false")
+            {
+                Retarget.log("Explicitly skipping image: ", imgs[i].src)
                 continue;
+            }
    
             Retarget.log("Found: " + imgs[i].src);
 
             // Callback has to take the img otherwise i lose the reference ??
             Retarget.extract_metadata_xmp(imgs[i], function(img, metadata)
             {
-                Retarget.replace(document, window, img, metadata);
+                if (metadata.sorted_ars.length == 0 || 
+                    metadata.spacings == {}) 
+                {
+                    Retarget.log("Skipping img: " + img.src + " no metadata found")
+                }
+                else
+                    Retarget.replace(document, window, img, metadata);
             });
         }
     },
