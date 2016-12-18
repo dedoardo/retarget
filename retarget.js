@@ -446,8 +446,6 @@ var RetargetGL =
             spacings[i] *= scale_factor_y;
         }
 
-        console.log(spacings)
-
         var row_num = rc.metadata.cells_y + 1;
         var col_num = rc.metadata.cells_x + 1;
 
@@ -749,6 +747,8 @@ var Retarget =
         new_canvas.style.maxHeight = style.maxHeight;
         new_canvas.style.float = style.float;
         new_canvas.style.border = style.border;
+
+        new_canvas.setAttribute("id", img.id + "-retargeted")
 
         // Redisplaying the image
         img.style.display = 'block';
