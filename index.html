@@ -203,7 +203,8 @@ input[type=range].slider:focus::-ms-fill-upper {
             img.style.width = w
             img.style.height = h
 
-            window.dispatchEvent(new Event('resize'));
+            if (canvas.style.display != 'none')
+                window.dispatchEvent(new Event('resize'));
         }
 
         function playground_switch()
@@ -215,7 +216,6 @@ input[type=range].slider:focus::-ms-fill-upper {
             {
                 stretched.style.display = 'block'
                 retargeted.style.display = 'none'
-                window.dispatchEvent(new Event('resize'));
                 document.getElementById('playground-switch').innerText = 'Show Retargeted'
             }
             else
