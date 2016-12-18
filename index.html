@@ -155,7 +155,7 @@ input[type=range].slider:focus::-ms-fill-upper {
         <h3><i id="original-image-retargeted-button" style="cursor: hand" onclick="img_enable('original-image-retargeted')" class="fa fa-minus" aria-hidden="true"></i> Retargeted image (1000x100)</h3>
         <div id="original-image-retargeted"><img src="enriched.jpg" width="1000" height="100"/></div>
         
-        <h3><i id="playground-button" style="cursor: hand" onclick="img_enable('playground')" class="fa fa-minus" aria-hidden="true"></i> Playground</h3>
+        <h3><i id="playground-button" style="cursor: hand" onclick="img_enable('playground')" class="fa fa-minus" aria-hidden="true"></i> Playground ( <span onclick="playground_switch()" style="color: blue; cursor: hand" id="playground-switch">Show stretched</span>  ) </h3>
         <div id="playground">
             <div style="height: 30px">
                 <span id='playground-width-text' >Width: 300</span> <input id="playground-width" class="slider" type="range" min="100" max="1000" step="1" value="300" style="width :150px" onchange="playground_resize()" >
@@ -199,7 +199,32 @@ input[type=range].slider:focus::-ms-fill-upper {
             canvas.style.width = w
             canvas.style.height = h
 
+            let img = document.getElementById('playground-img');
+            img.style.width = w
+            img.style.height = h
+
             window.dispatchEvent(new Event('resize'));
+        }
+
+        function playground_switch()
+        {
+            let stretched = document.getElementById('playground-img');
+            let retargeted = document.getElementById('playground-img-retargeted')
+
+            if (stretched.style.display == 'none')
+            {
+                stretched.style.display = 'block'
+                retargeted.style.display = 'none'
+                window.dispatchEvent(new Event('resize'));
+                document.getElementById('playground-switch').innerText = 'Show Retargeted'
+            }
+            else
+            {
+                stretched.style.display = 'none'
+                retargeted.style.display = 'block'
+                document.getElementById('playground-switch').innerText = 'Show Stretched'
+                window.dispatchEvent(new Event('resize'));
+            }
         }
     </script>
 </body>
