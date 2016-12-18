@@ -132,13 +132,13 @@ input[type=range].slider:focus::-ms-fill-upper {
 
     <h1 style="color: teal; font-size: 38px; text-align: center;"> Introduction </h1>
     <h3>
-        Enables image retarget in web pages. It works by creating a saliency map
-        that is used to enrich the image with custom metadata used by the client-side script.
-        Overview of the steps
+        Enables image retargeting in web pages. It works by creating a saliency map (offline)
+        that is used to enrich the image with custom metadata used by the client-side script.<br>
+        Steps:
         <ul>
-        <li> Create saliency map (GIMP/Other tools)</li>
-        <li> Enrich image (Single command) </li>
-        <li> Include retarget.js </li>
+        <li> Create saliency map (Image editing or other automated tools)</li>
+        <li> Enrich image (command line utility and easily automated) </li>
+        <li> Include retarget.js in HTML web page </li>
         </ul>
     </h3>
     <h1 style="color: teal; font-size: 38px; text-align: center;"> Examples </h1>
@@ -149,10 +149,10 @@ input[type=range].slider:focus::-ms-fill-upper {
         <h3><i id="original-image-button" style="cursor: hand" onclick="img_enable('original-image')" class="fa fa-plus" aria-hidden="true"></i> Show original image (Hidden by default) </h3>
         <img style="display: none" id="original-image" src="original.jpg" width="1000px" height="auto"/><br>
         
-        <h3><i id ="original-image-stretched-button" style="cursor: hand" onclick="img_enable('original-image-stretched')" class="fa fa-minus" aria-hidden="true"></i> Stretched original image (700x100)</h3>
+        <h3><i id ="original-image-stretched-button" style="cursor: hand" onclick="img_enable('original-image-stretched')" class="fa fa-minus" aria-hidden="true"></i> Stretched original image (1000x100)</h3>
         <img id="original-image-stretched" src="original.jpg" width="1000" height="100"/><br>
         
-        <h3><i id="original-image-retargeted-button" style="cursor: hand" onclick="img_enable('original-image-retargeted')" class="fa fa-minus" aria-hidden="true"></i> Retargeted image (700x100)</h3>
+        <h3><i id="original-image-retargeted-button" style="cursor: hand" onclick="img_enable('original-image-retargeted')" class="fa fa-minus" aria-hidden="true"></i> Retargeted image (1000x100)</h3>
         <div id="original-image-retargeted"><img src="enriched.jpg" width="1000" height="100"/></div>
         
         <h3><i id="playground-button" style="cursor: hand" onclick="img_enable('playground')" class="fa fa-minus" aria-hidden="true"></i> Playground</h3>
