@@ -14,8 +14,7 @@ When retargeting we then interpolate the closest aspect ratios to compute a grid
 The only input required to the process is a __saliency map__ which indentifies the important region of the image. The saliency map is only used offline, it is not used by `retarget.js` in any way.
 
 Saliency maps can be painted by hand, but if you want to generate them automatically, you can find some non-commercial state-of-the-art research projects at Ming-Ming Cheng's excellent repository[2]. Other Open-source software can be found here [3]. 
-`retarget-auto.cpp` is an extension to the metadata embedder (`retarget.cpp`) which uses Ming-Ming Cheng's Contrast-Based approach[2] to automatically generate a saliency map. You can find a precompiled binary here <link>. If you want to compile it yourself there is a little extra work to be done, but a CMakeLists.txt is provided.  
-<compilation instructions>
+`retarget-auto.cpp` is an extension to the metadata embedder (`retarget.cpp`) which uses Ming-Ming Cheng's Contrast-Based approach[2] to automatically generate a saliency map. 
 
 ##### See the Download section for Windows builds.
 ##### Compiling on Linux/OSX is also pretty straighforward   
