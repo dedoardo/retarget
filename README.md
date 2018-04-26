@@ -14,7 +14,6 @@ When retargeting we then interpolate the closest aspect ratios to compute a grid
 The only input required to the process is a __saliency map__ which indentifies the important region of the image. The saliency map is only used offline, it is not used by `retarget.js` in any way.
 
 Saliency maps can be painted by hand, but if you want to generate them automatically, you can find some non-commercial state-of-the-art research projects at Ming-Ming Cheng's excellent repository[2]. Other Open-source software can be found here [3]. 
-`retarget-auto.cpp` is an extension to the metadata embedder (`retarget.cpp`) which uses Ming-Ming Cheng's Contrast-Based approach[2] to automatically generate a saliency map. 
 
 ##### See the Download section for Windows builds.
 ##### Compiling on Linux/OSX is also pretty straighforward   
@@ -27,6 +26,6 @@ TODO
 TODO
 
 # References:
-[1] Daniele Panozzo, Ofir Weber, and Olga Sorkine. 2012. Robust Image Retargeting via Axis-Aligned Deformation. Comput. Graph. Forum 31, 2pt1 (May 2012), 229-236. DOI=http://dx.doi.org/10.1111/j.1467-8659.2012.03001.x
-[2] https://github.com/MingMingCheng/CmCode
-[3] https://github.com/the-grid/gmr-saliency
+[1] Daniele Panozzo, Ofir Weber, and Olga Sorkine. 2012. Robust Image Retargeting via Axis-Aligned Deformation. Comput. Graph. Forum 31, 2pt1 (May 2012), 229-236. DOI=http://dx.doi.org/10.1111/j.1467-8659.2012.03001.x  
+[2] https://github.com/MingMingCheng/CmCode  
+[3] https://github.com/the-grid/gmr-saliency  
