@@ -513,8 +513,8 @@ var RetargetGL =
 
         rc.gl.drawElements(rc.gl.TRIANGLES, rc.ibo.num_elements, rc.gl.UNSIGNED_SHORT, 0);
 
-       // rc.gl.useProgram(rc.grid_program);
-        //rc.gl.drawElements(rc.gl.LINES, rc.ibo.num_elements, rc.gl.UNSIGNED_SHORT, 0);
+        rc.gl.useProgram(rc.grid_program);
+        rc.gl.drawElements(rc.gl.LINES, rc.ibo.num_elements, rc.gl.UNSIGNED_SHORT, 0);
     }
 }
 
@@ -522,7 +522,7 @@ var Retarget =
 {
     name_to_resolution : function(name)
     {
-        var match = /RetargetSpacings([0-9]*)x([0-9]*)/g.exec(name);
+        var match = /Spacings([0-9]*)x([0-9]*)/g.exec(name);
         return [Number(match[1]), Number(match[2])];
     },
 
@@ -621,6 +621,8 @@ var Retarget =
 
                 xmp_data = str.substring(start_xmp_idx, end_xmp_idx);
 
+                console.log(xmp_data)
+
                 // Thanks a lot
                 // http://stackoverflow.com/questions/14665288/removing-invalid-characters-from-xml-before-serializing-it-with-xmlserializer
                 // TODO: Properly extend based on specification if needed
@@ -637,25 +639,27 @@ var Retarget =
                 }
 
                 // xmp NS = http://ns.adobe.com/xap/1.0/ 
-                function doc_find(name) { return doc.getElementsByTagNameNS("http://ns.adobe.com/xap/1.0/", name)[0]; };
+                function doc_find(name) { return doc.getElementsByTagNameNS("Retarget/", name)[0]; };
 
                 // Looking for spacings
                 desc_elements = doc.getElementsByTagNameNS("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "Description");
                 for (var de = 0; de < desc_elements.length; ++de)
                 {
                     var desc_element = desc_elements[de];
-                    var cells_x_attr = desc_element.getAttributeNS("http://ns.adobe.com/xap/1.0/", "RetargetCellsX");
+                    var cells_x_attr = desc_element.getAttributeNS("Retarget/", "CellsX");
+                    console.log(cells_x_attr)
+                    console.log(desc_element)
                     if (cells_x_attr != undefined)
                         ret.cells_x = Utils.base64_to_u16(cells_x_attr);
                     
-                    var cells_y_attr = desc_element.getAttributeNS("http://ns.adobe.com/xap/1.0/", "RetargetCellsY");
+                    var cells_y_attr = desc_element.getAttributeNS("Retarget/", "CellsY");
                     if (cells_y_attr != undefined)
                         ret.cells_y = Utils.base64_to_u16(cells_y_attr);
 
                     for (var c = 0; c < desc_element.childNodes.length; ++c)
                     {
                         var child = desc_element.childNodes[c];
-                        if (/^xmp:RetargetSpacings[0-9]+\x[0-9]+/.test(child.tagName))
+                        if (/^Retarget:Spacings[0-9]+\x[0-9]+/.test(child.tagName))
                         {
                             ret.spacings[child.tagName] = extract_spacings(child);
                         }
