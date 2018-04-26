@@ -1,3 +1,5 @@
+#### !WIP! Working on documentation / builds / examples
+
 # `retarget.js` 
 Retarget.js is a script that enables image retargeting in browsers. Once included in a webpage it looks for custom metadata inside the images and adaptively retargets them to any resolution using WebGL.
 
