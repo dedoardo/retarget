@@ -41,6 +41,6 @@ For **Windows** A Visual Studio 2017 project is provided in the `retarget` direc
 For **Linux** both Eigen and exiv2 are available on most package managers. 
 
 # References:
-[1] Daniele Panozzo, Ofir Weber, and Olga Sorkine. 2012. Robust Image Retargeting via Axis-Aligned Deformation. Comput. Graph. Forum 31, 2pt1 (May 2012), 229-236. DOI=http://dx.doi.org/10.1111/j.1467-8659.2012.03001.x
-[2] https://github.com/MingMingCheng/CmCode
-[3] https://github.com/the-grid/gmr-saliency
+[1] Daniele Panozzo, Ofir Weber, and Olga Sorkine. 2012. Robust Image Retargeting via Axis-Aligned Deformation. Comput. Graph. Forum 31, 2pt1 (May 2012), 229-236. DOI=http://dx.doi.org/10.1111/j.1467-8659.2012.03001.x  
+[2] https://github.com/MingMingCheng/CmCode  
+[3] https://github.com/the-grid/gmr-saliency  
