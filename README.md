@@ -4,8 +4,6 @@ Retarget.js is a script that enables image retargeting in browsers. Once include
 The image is retargeted in real-time using an axis-aligned approach as described in [[1](https://dl.acm.org/citation.cfm?id=2318863)]. Retargeting the image involves solving a constrained quadratic program. Although this could be implemented in Javascript, it would still add a significant overhead, linear in the number of images. For each image we solve for a variety of resolutions and encode the resulting grid as metadata in the images. This is achieved by `retarget.cpp`.  
 When retargeting we then interpolate the closest aspect ratios to compute a grid transformation for any desired target resolution.
 
-### Demo: You can find a demo at: [sparkon.github.io/retarget](https://sparkon.github.io/retarget/)
-
 # `retarget.cpp`
 `retarget.cpp` takes care of generating transformations for different resolutions and embedding them in the images. The metadata is embedded as XMP, we have noticed that the maximum XMP packet segment of 65kb is enough for an acceptable number of resolution. Extended xmp packets can also be encoded using the official Adobe XMP Toolkit [BSD-like] as Exiv2 apparently does not allow for encoding multiple XMP packets. 
 
